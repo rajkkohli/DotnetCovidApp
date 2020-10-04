@@ -1,0 +1,44 @@
+﻿@model Dot_myCovid19app.Models.URL
+
+@{
+    ViewBag.Title = "Details URL";
+}
+
+<h2>Details URL</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CovidURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CovidURL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Createddate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Createddate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (Convert.ToString(Session["UserType"]) == "Admin")
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) <span>|</span>
+    }
+    @Html.ActionLink("Back to List", "Index")
+</p>

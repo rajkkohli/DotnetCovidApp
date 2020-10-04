@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Dot_myCovid19app.Models.Video>
+
+@{
+    ViewBag.Title = "Videos List";
+}
+
+<h2>Videos List</h2>
+
+<p>
+    @if (Convert.ToString(Session["UserType"]) == "Admin")
+    {
+        @Html.ActionLink("Create New", "Create")
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.URL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Createddate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modifieddate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.URL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Createddate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modifieddate)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) 
+                @if (Convert.ToString(Session["UserType"]) == "Admin")
+                {
+                    <span>|</span> @Html.ActionLink("Edit", "Edit", new { id = item.ID }) <span>|</span>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                }
+            </td>
+        </tr>
+    }
+
+</table>

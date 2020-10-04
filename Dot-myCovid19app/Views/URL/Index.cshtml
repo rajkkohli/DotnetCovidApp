@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Dot_myCovid19app.Models.URL>
+
+@{
+    ViewBag.Title = "URLs List";
+}
+
+<h2>URLs List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CountryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CovidURL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Createddate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CountryName)
+        </td>
+        <td>
+                <a href="@item.CovidURL" target="_blank">
+                <span>@item.CovidURL</span></a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Createddate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
